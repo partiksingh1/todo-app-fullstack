@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+dist/
+
+# Testing
+coverage/
+
+# Production
+build/
+
+# IDE/Editor-Specific Files
+*.suo
+*.user
+*.tmp
+*.log
+*.db
+
+# Other Files
+package-lock.jsonbackend/node_modules
+backend/node_modules/
+frontend/node_modules/
+backend/.env
