@@ -10,6 +10,7 @@ function Dashboard() {
     const [todoDescription, setTodoDescription] = useState("");
     const [todoStatus, setTodoStatus] = useState("pending");
     const userId = localStorage.getItem('userId');
+    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
@@ -101,6 +102,7 @@ function Dashboard() {
     const handleSignout = () => {
         localStorage.removeItem('userId');
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
         navigate('/login'); // Redirect to the login page or home page
     };
 
@@ -121,7 +123,7 @@ function Dashboard() {
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
             <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8">
                 <h1 className="font-bold text-3xl text-center mb-8 text-gray-800">Welcome</h1>
-                <h2 className="text-2xl mb-4 text-gray-700">Your Todos</h2>
+                <h2 className="text-2xl mb-4 text-gray-700 text-center">{username}</h2>
                 <div className="max-h-64 overflow-y-auto">
                     {todos.length === 0 ? (
                         <p className="text-gray-500 text-center">No todos available.</p>
@@ -139,7 +141,7 @@ function Dashboard() {
                                     <div className="flex items-center space-x-2">
                                         <select
                                             value={todo.status}
-                                            onChange={(e) => handleStatusChange(todo._id, e.target.value)}
+                                            onChange={(e) => handleUpdateStatus(todo._id, e.target.value)}
                                             className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusBadge(todo.status)}`}
                                         >
                                             <option value="pending">Pending</option>

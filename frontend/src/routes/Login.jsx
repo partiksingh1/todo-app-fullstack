@@ -24,6 +24,7 @@ function Login() {
             // const {userId} = response.data.user
             localStorage.setItem("token", token);
             localStorage.setItem("userId", user._id);
+            localStorage.setItem("username",user.username)
 
             navigate("/dashboard");
         } catch (error) {
