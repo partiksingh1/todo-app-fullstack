@@ -22,9 +22,9 @@ const todoSchema = new Schema({
         type:Date,
         default:Date.now()
     },
-    completed: {
-        type:Boolean,
-        default:false
+    status: {
+        type:String,
+        default:"pending"
     }
 })
 export const Todo = mongoose.model("Todo", todoSchema);

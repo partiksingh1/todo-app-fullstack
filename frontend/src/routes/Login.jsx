@@ -17,7 +17,13 @@ function Login() {
         try {
             const response = await axios.post("http://localhost:8000/user/login",{email,password});
             const {token} = response.data;
-            localStorage.setItem("token",token);
+            const {user} = response.data;
+
+            console.log("responsee"+user._id);
+
+            // const {userId} = response.data.user
+            localStorage.setItem("token", token);
+            localStorage.setItem("userId", user._id);
 
             navigate("/dashboard");
         } catch (error) {
